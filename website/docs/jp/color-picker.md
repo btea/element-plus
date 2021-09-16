@@ -7,14 +7,16 @@ color-picker は、複数のカラーフォーマットに対応したカラー�
 :::demo color-picker は、v-model にバインドするために文字列型の変数が必要です。
 
 ```html
-<div class="block">
-  <span class="demonstration">With default value</span>
-  <el-color-picker v-model="color1"></el-color-picker>
-</div>
-<div class="block">
-  <span class="demonstration">With no default value</span>
-  <el-color-picker v-model="color2"></el-color-picker>
-</div>
+<template>
+  <div class="block">
+    <span class="demonstration">With default value</span>
+    <el-color-picker v-model="color1"></el-color-picker>
+  </div>
+  <div class="block">
+    <span class="demonstration">With no default value</span>
+    <el-color-picker v-model="color2"></el-color-picker>
+  </div>
+</template>
 
 <script>
   export default {
@@ -53,7 +55,9 @@ color-picker は、複数のカラーフォーマットに対応したカラー�
 :::demo color-picker はアルファチャンネルの選択をサポートしています。アルファチャンネルの選択を有効にするには、`show-alpha` アトリビュートを追加するだけです。
 
 ```html
-<el-color-picker v-model="color" show-alpha></el-color-picker>
+<template>
+  <el-color-picker v-model="color" show-alpha></el-color-picker>
+</template>
 
 <script>
   export default {
@@ -89,8 +93,10 @@ color-picker は、複数のカラーフォーマットに対応したカラー�
 :::demo color-picker は事前定義されたカラーオプションをサポートしています。
 
 ```html
-<el-color-picker v-model="color" show-alpha :predefine="predefineColors">
-</el-color-picker>
+<template>
+  <el-color-picker v-model="color" show-alpha :predefine="predefineColors">
+  </el-color-picker>
+</template>
 
 <script>
   export default {
@@ -159,10 +165,12 @@ color-picker は、複数のカラーフォーマットに対応したカラー�
 :::demo
 
 ```html
-<el-color-picker v-model="color"></el-color-picker>
-<el-color-picker v-model="color" size="medium"></el-color-picker>
-<el-color-picker v-model="color" size="small"></el-color-picker>
-<el-color-picker v-model="color" size="mini"></el-color-picker>
+<template>
+  <el-color-picker v-model="color"></el-color-picker>
+  <el-color-picker v-model="color" size="medium"></el-color-picker>
+  <el-color-picker v-model="color" size="small"></el-color-picker>
+  <el-color-picker v-model="color" size="mini"></el-color-picker>
+</template>
 
 <script>
   export default {

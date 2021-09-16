@@ -9,22 +9,28 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
 :::demo 需要设置 `model-value / v-model` 属性，它接收 `Boolean`，当为 `true` 时显示 Dialog。Dialog 分为两个部分：`body` 和 `footer`，`footer` 需要具名为 `footer` 的 `slot`。`title` 属性用于定义标题，它是可选的，默认值为空。最后，本例还展示了 `before-close` 的用法。
 
 ```html
-<el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+<template>
+  <el-button type="text" @click="dialogVisible = true"
+    >点击打开 Dialog</el-button
+  >
 
-<el-dialog
-  title="提示"
-  v-model="dialogVisible"
-  width="30%"
-  :before-close="handleClose"
->
-  <span>这是一段信息</span>
-  <template #footer>
-    <span class="dialog-footer">
-      <el-button @click="dialogVisible = false">取 消</el-button>
-      <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-    </span>
-  </template>
-</el-dialog>
+  <el-dialog
+    title="提示"
+    v-model="dialogVisible"
+    width="30%"
+    :before-close="handleClose"
+  >
+    <span>这是一段信息</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false"
+          >确 定</el-button
+        >
+      </span>
+    </template>
+  </el-dialog>
+</template>
 
 <script>
   export default {
@@ -88,44 +94,54 @@ Dialog 组件的内容可以是任意的，甚至可以是表格或表单，下�
 :::demo
 
 ```html
-<el-button type="text" @click="dialogTableVisible = true"
-  >打开嵌套表格的 Dialog</el-button
->
+<template>
+  <el-button type="text" @click="dialogTableVisible = true"
+    >打开嵌套表格的 Dialog</el-button
+  >
 
-<el-dialog title="收货地址" v-model="dialogTableVisible">
-  <el-table :data="gridData">
-    <el-table-column property="date" label="日期" width="150"></el-table-column>
-    <el-table-column property="name" label="姓名" width="200"></el-table-column>
-    <el-table-column property="address" label="地址"></el-table-column>
-  </el-table>
-</el-dialog>
+  <el-dialog title="收货地址" v-model="dialogTableVisible">
+    <el-table :data="gridData">
+      <el-table-column
+        property="date"
+        label="日期"
+        width="150"
+      ></el-table-column>
+      <el-table-column
+        property="name"
+        label="姓名"
+        width="200"
+      ></el-table-column>
+      <el-table-column property="address" label="地址"></el-table-column>
+    </el-table>
+  </el-dialog>
 
-<!-- Form -->
-<el-button type="text" @click="dialogFormVisible = true"
-  >打开嵌套表单的 Dialog</el-button
->
+  <!-- Form -->
+  <el-button type="text" @click="dialogFormVisible = true"
+    >打开嵌套表单的 Dialog</el-button
+  >
 
-<el-dialog title="收货地址" v-model="dialogFormVisible">
-  <el-form :model="form">
-    <el-form-item label="活动名称" :label-width="formLabelWidth">
-      <el-input v-model="form.name" autocomplete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="活动区域" :label-width="formLabelWidth">
-      <el-select v-model="form.region" placeholder="请选择活动区域">
-        <el-option label="区域一" value="shanghai"></el-option>
-        <el-option label="区域二" value="beijing"></el-option>
-      </el-select>
-    </el-form-item>
-  </el-form>
-  <template #footer>
-    <span class="dialog-footer">
-      <el-button @click="dialogFormVisible = false">取 消</el-button>
-      <el-button type="primary" @click="dialogFormVisible = false"
-        >确 定</el-button
-      >
-    </span>
-  </template>
-</el-dialog>
+  <el-dialog title="收货地址" v-model="dialogFormVisible">
+    <el-form :model="form">
+      <el-form-item label="活动名称" :label-width="formLabelWidth">
+        <el-input v-model="form.name" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="活动区域" :label-width="formLabelWidth">
+        <el-select v-model="form.region" placeholder="请选择活动区域">
+          <el-option label="区域一" value="shanghai"></el-option>
+          <el-option label="区域二" value="beijing"></el-option>
+        </el-select>
+      </el-form-item>
+    </el-form>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false"
+          >确 定</el-button
+        >
+      </span>
+    </template>
+  </el-dialog>
+</template>
 
 <script>
   export default {
@@ -294,21 +310,23 @@ Dialog 组件的内容可以是任意的，甚至可以是表格或表单，下�
 :::demo 将`center`设置为`true`即可使标题和底部居中。`center`仅影响标题和底部区域。Dialog 的内容是任意的，在一些情况下，内容并不适合居中布局。如果需要内容也水平居中，请自行为其添加 CSS。
 
 ```html
-<el-button type="text" @click="centerDialogVisible = true"
-  >点击打开 Dialog</el-button
->
+<template>
+  <el-button type="text" @click="centerDialogVisible = true"
+    >点击打开 Dialog</el-button
+  >
 
-<el-dialog title="提示" v-model="centerDialogVisible" width="30%" center>
-  <span>需要注意的是内容是默认不居中的</span>
-  <template #footer>
-    <span class="dialog-footer">
-      <el-button @click="centerDialogVisible = false">取 消</el-button>
-      <el-button type="primary" @click="centerDialogVisible = false"
-        >确 定</el-button
-      >
-    </span>
-  </template>
-</el-dialog>
+  <el-dialog title="提示" v-model="centerDialogVisible" width="30%" center>
+    <span>需要注意的是内容是默认不居中的</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="centerDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="centerDialogVisible = false"
+          >确 定</el-button
+        >
+      </span>
+    </template>
+  </el-dialog>
+</template>
 
 <script>
   export default {
@@ -349,28 +367,30 @@ Dialog 的内容是懒渲染的，即在第一次被打开之前，传入的默�
 :::demo 需要注意的是，当这个属性被启用时，Dialog 内并不会有任何的 DOM 节点存在，除了 `overlay` `header（如果有）` `footer（如果有）`
 
 ```html
-<el-button type="text" @click="centerDialogVisible = true"
-  >点击打开 Dialog</el-button
->
+<template>
+  <el-button type="text" @click="centerDialogVisible = true"
+    >点击打开 Dialog</el-button
+  >
 
-<el-dialog
-  title="提示"
-  v-model="centerDialogVisible"
-  width="30%"
-  destroy-on-close
-  center
->
-  <span>需要注意在 Dialog 打开前是这条内容和下面的内容都是不会被渲染的</span>
-  <strong>额外的内容</strong>
-  <template #footer>
-    <span class="dialog-footer">
-      <el-button @click="centerDialogVisible = false">取 消</el-button>
-      <el-button type="primary" @click="centerDialogVisible = false"
-        >确 定</el-button
-      >
-    </span>
-  </template>
-</el-dialog>
+  <el-dialog
+    title="提示"
+    v-model="centerDialogVisible"
+    width="30%"
+    destroy-on-close
+    center
+  >
+    <span>需要注意在 Dialog 打开前是这条内容和下面的内容都是不会被渲染的</span>
+    <strong>额外的内容</strong>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="centerDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="centerDialogVisible = false"
+          >确 定</el-button
+        >
+      </span>
+    </template>
+  </el-dialog>
+</template>
 
 <script>
   export default {

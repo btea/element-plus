@@ -9,14 +9,19 @@ Configure i18n related properties via Config Provider, to get language switching
 :::demo Use two attributes to provide i18n related config
 
 ```html
-<div>
-  <el-config-provider :locale="locale1">
-    <el-color-picker :modelValue="''" style="vertical-align: middle;" />
-  </el-config-provider>
-  <el-button @click="toggle" style="margin-left: 8px; vertical-align: middle;">
-    Switch Lang
-  </el-button>
-</div>
+<template>
+  <div>
+    <el-config-provider :locale="locale1">
+      <el-color-picker :modelValue="''" style="vertical-align: middle;" />
+    </el-config-provider>
+    <el-button
+      @click="toggle"
+      style="margin-left: 8px; vertical-align: middle;"
+    >
+      Switch Lang
+    </el-button>
+  </div>
+</template>
 
 <script>
   // import { ConfigProvider } from 'element-plus'

@@ -7,7 +7,9 @@
 :::demo 現在表示されている月を指定するために `value` を設定する。`value` が指定されない場合は現在の月を表示する。`value` は双方向のバインディングをサポートする。
 
 ```html
-<el-calendar v-model="value"> </el-calendar>
+<template>
+  <el-calendar v-model="value"> </el-calendar>
+</template>
 
 <script>
   export default {
@@ -44,14 +46,16 @@
 :::demo `scoped-slot` に `dateCell` という名前を設定することで、calendar セルに表示する内容をカスタマイズすることができる。`scoped-slot`では、日付(現在のセルの日付)とデータ(type, isSelected, day 属性を含む)を取得することができます。詳細は以下の API ドキュメントを参照のこと。
 
 ```html
-<el-calendar>
-  <template #dateCell="{data}">
-    <p :class="data.isSelected ? 'is-selected' : ''">
-      {{ data.day.split('-').slice(1).join('-') }} {{ data.isSelected ? '✔️' :
-      ''}}
-    </p>
-  </template>
-</el-calendar>
+<template>
+  <el-calendar>
+    <template #dateCell="{data}">
+      <p :class="data.isSelected ? 'is-selected' : ''">
+        {{ data.day.split('-').slice(1).join('-') }} {{ data.isSelected ? '✔️' :
+        ''}}
+      </p>
+    </template>
+  </el-calendar>
+</template>
 <style>
   .is-selected {
     color: #1989fa;
@@ -66,7 +70,9 @@
 :::demo calendar の表示範囲を指定するために `range` 属性を設定する。開始時刻は月曜日、終了時刻は日曜日でなければならず、期間は 2 ヶ月を超えてはならない。
 
 ```html
-<el-calendar :range="['2019-03-04', '2019-03-24']"> </el-calendar>
+<template>
+  <el-calendar :range="['2019-03-04', '2019-03-24']"> </el-calendar>
+</template>
 ```
 
 :::
@@ -76,19 +82,27 @@
 :::demo という名前を設定することで `header` に `scoped-slot` カレンダーヘッダーに表示されるコンテンツをカスタマイズします。 存在 `scoped-slot` 日付（現在のセルの日付）を取得できます。 詳細については、以下の API ドキュメントを参照してください。
 
 ```html
-<el-calendar ref="calendar">
-  <template #header="{date}">
-    <span>カスタムヘッダーコンテンツ</span>
-    <span>{{ date }}</span>
-    <el-button-group>
-      <el-button size="mini" @click="selectDate('prev-year')">上一年</el-button>
-      <el-button size="mini" @click="selectDate('prev-month')">先月</el-button>
-      <el-button size="mini" @click="selectDate('today')">現在</el-button>
-      <el-button size="mini" @click="selectDate('next-month')">来月</el-button>
-      <el-button size="mini" @click="selectDate('next-year')">来年</el-button>
-    </el-button-group>
-  </template>
-</el-calendar>
+<template>
+  <el-calendar ref="calendar">
+    <template #header="{date}">
+      <span>カスタムヘッダーコンテンツ</span>
+      <span>{{ date }}</span>
+      <el-button-group>
+        <el-button size="mini" @click="selectDate('prev-year')"
+          >上一年</el-button
+        >
+        <el-button size="mini" @click="selectDate('prev-month')"
+          >先月</el-button
+        >
+        <el-button size="mini" @click="selectDate('today')">現在</el-button>
+        <el-button size="mini" @click="selectDate('next-month')"
+          >来月</el-button
+        >
+        <el-button size="mini" @click="selectDate('next-year')">来年</el-button>
+      </el-button-group>
+    </template>
+  </el-calendar>
+</template>
 
 <script>
   export default {

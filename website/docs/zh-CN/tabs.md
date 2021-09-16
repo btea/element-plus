@@ -75,12 +75,14 @@
 :::demo 将`type`设置为`border-card`。
 
 ```html
-<el-tabs type="border-card">
-  <el-tab-pane label="用户管理">用户管理</el-tab-pane>
-  <el-tab-pane label="配置管理">配置管理</el-tab-pane>
-  <el-tab-pane label="角色管理">角色管理</el-tab-pane>
-  <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
-</el-tabs>
+<template>
+  <el-tabs type="border-card">
+    <el-tab-pane label="用户管理">用户管理</el-tab-pane>
+    <el-tab-pane label="配置管理">配置管理</el-tab-pane>
+    <el-tab-pane label="角色管理">角色管理</el-tab-pane>
+    <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
+  </el-tabs>
+</template>
 ```
 
 :::
@@ -127,17 +129,19 @@
 :::demo
 
 ```html
-<el-tabs type="border-card">
-  <el-tab-pane>
-    <template #label>
-      <span><i class="el-icon-date"></i> 我的行程</span>
-    </template>
-    我的行程
-  </el-tab-pane>
-  <el-tab-pane label="消息中心">消息中心</el-tab-pane>
-  <el-tab-pane label="角色管理">角色管理</el-tab-pane>
-  <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
-</el-tabs>
+<template>
+  <el-tabs type="border-card">
+    <el-tab-pane>
+      <template #label>
+        <span><i class="el-icon-date"></i> 我的行程</span>
+      </template>
+      我的行程
+    </el-tab-pane>
+    <el-tab-pane label="消息中心">消息中心</el-tab-pane>
+    <el-tab-pane label="角色管理">角色管理</el-tab-pane>
+    <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
+  </el-tabs>
+</template>
 ```
 
 :::
@@ -149,21 +153,23 @@
 :::demo
 
 ```html
-<el-tabs
-  v-model="editableTabsValue"
-  type="card"
-  editable
-  @edit="handleTabsEdit"
->
-  <el-tab-pane
-    :key="item.name"
-    v-for="(item, index) in editableTabs"
-    :label="item.title"
-    :name="item.name"
+<template>
+  <el-tabs
+    v-model="editableTabsValue"
+    type="card"
+    editable
+    @edit="handleTabsEdit"
   >
-    {{item.content}}
-  </el-tab-pane>
-</el-tabs>
+    <el-tab-pane
+      :key="item.name"
+      v-for="(item, index) in editableTabs"
+      :label="item.title"
+      :name="item.name"
+    >
+      {{item.content}}
+    </el-tab-pane>
+  </el-tabs>
+</template>
 <script>
   export default {
     data() {
@@ -225,26 +231,28 @@
 :::demo
 
 ```html
-<div style="margin-bottom: 20px;">
-  <el-button size="small" @click="addTab(editableTabsValue)">
-    add tab
-  </el-button>
-</div>
-<el-tabs
-  v-model="editableTabsValue"
-  type="card"
-  closable
-  @tab-remove="removeTab"
->
-  <el-tab-pane
-    v-for="(item, index) in editableTabs"
-    :key="item.name"
-    :label="item.title"
-    :name="item.name"
+<template>
+  <div style="margin-bottom: 20px;">
+    <el-button size="small" @click="addTab(editableTabsValue)">
+      add tab
+    </el-button>
+  </div>
+  <el-tabs
+    v-model="editableTabsValue"
+    type="card"
+    closable
+    @tab-remove="removeTab"
   >
-    {{item.content}}
-  </el-tab-pane>
-</el-tabs>
+    <el-tab-pane
+      v-for="(item, index) in editableTabs"
+      :key="item.name"
+      :label="item.title"
+      :name="item.name"
+    >
+      {{item.content}}
+    </el-tab-pane>
+  </el-tabs>
+</template>
 <script>
   export default {
     data() {

@@ -7,16 +7,18 @@
 :::demo 可通过`fit`确定图片如何适应到容器框，同原生 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)。
 
 ```html
-<div class="demo-image">
-  <div class="block" v-for="fit in fits" :key="fit">
-    <span class="demonstration">{{ fit }}</span>
-    <el-image
-      style="width: 100px; height: 100px"
-      :src="url"
-      :fit="fit"
-    ></el-image>
+<template>
+  <div class="demo-image">
+    <div class="block" v-for="fit in fits" :key="fit">
+      <span class="demonstration">{{ fit }}</span>
+      <el-image
+        style="width: 100px; height: 100px"
+        :src="url"
+        :fit="fit"
+      ></el-image>
+    </div>
   </div>
-</div>
+</template>
 
 <script>
   export default {
@@ -56,20 +58,22 @@
 :::demo 可通过`slot = placeholder`可自定义占位内容
 
 ```html
-<div class="demo-image__placeholder">
-  <div class="block">
-    <span class="demonstration">默认</span>
-    <el-image :src="src"></el-image>
+<template>
+  <div class="demo-image__placeholder">
+    <div class="block">
+      <span class="demonstration">默认</span>
+      <el-image :src="src"></el-image>
+    </div>
+    <div class="block">
+      <span class="demonstration">自定义</span>
+      <el-image :src="src">
+        <template #placeholder>
+          <div class="image-slot">加载中<span class="dot">...</span></div>
+        </template>
+      </el-image>
+    </div>
   </div>
-  <div class="block">
-    <span class="demonstration">自定义</span>
-    <el-image :src="src">
-      <template #placeholder>
-        <div class="image-slot">加载中<span class="dot">...</span></div>
-      </template>
-    </el-image>
-  </div>
-</div>
+</template>
 
 <script>
   export default {
@@ -106,22 +110,24 @@
 :::demo 可通过`slot = error`可自定义加载失败内容
 
 ```html
-<div class="demo-image__error">
-  <div class="block">
-    <span class="demonstration">默认</span>
-    <el-image></el-image>
+<template>
+  <div class="demo-image__error">
+    <div class="block">
+      <span class="demonstration">默认</span>
+      <el-image></el-image>
+    </div>
+    <div class="block">
+      <span class="demonstration">自定义</span>
+      <el-image>
+        <template #error>
+          <div class="image-slot">
+            <i class="el-icon-picture-outline"></i>
+          </div>
+        </template>
+      </el-image>
+    </div>
   </div>
-  <div class="block">
-    <span class="demonstration">自定义</span>
-    <el-image>
-      <template #error>
-        <div class="image-slot">
-          <i class="el-icon-picture-outline"></i>
-        </div>
-      </template>
-    </el-image>
-  </div>
-</div>
+</template>
 ```
 
 :::
@@ -131,9 +137,11 @@
 :::demo 可通过`lazy`开启懒加载功能，当图片滚动到可视范围内才会加载。可通过`scroll-container`来设置滚动容器，若未定义，则为最近一个`overflow`值为`auto`或`scroll`的父元素。
 
 ```html
-<div class="demo-image__lazy">
-  <el-image v-for="url in urls" :key="url" :src="url" lazy></el-image>
-</div>
+<template>
+  <div class="demo-image__lazy">
+    <el-image v-for="url in urls" :key="url" :src="url" lazy></el-image>
+  </div>
+</template>
 
 <script>
   export default {
@@ -185,14 +193,16 @@
 :::demo 可通过 `previewSrcList` 开启预览大图的功能。
 
 ```html
-<div class="demo-image__preview">
-  <el-image
-    style="width: 100px; height: 100px"
-    :src="url"
-    :preview-src-list="srcList"
-  >
-  </el-image>
-</div>
+<template>
+  <div class="demo-image__preview">
+    <el-image
+      style="width: 100px; height: 100px"
+      :src="url"
+      :preview-src-list="srcList"
+    >
+    </el-image>
+  </div>
+</template>
 
 <script>
   export default {

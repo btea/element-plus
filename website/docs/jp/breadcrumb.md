@@ -7,12 +7,16 @@
 :::demo `el-breadcrumb` では、`el-breadcrumb-item` はホームページから始まる各レベルを表すタグである。このコンポーネントは `String` 属性 `separator` を持ち、セパレータを決定する。デフォルト値は'/'である。
 
 ```html
-<el-breadcrumb separator="/">
-  <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-  <el-breadcrumb-item><a href="/">promotion management</a></el-breadcrumb-item>
-  <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-  <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-</el-breadcrumb>
+<template>
+  <el-breadcrumb separator="/">
+    <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
+    <el-breadcrumb-item
+      ><a href="/">promotion management</a></el-breadcrumb-item
+    >
+    <el-breadcrumb-item>promotion list</el-breadcrumb-item>
+    <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+  </el-breadcrumb>
+</template>
 ```
 
 :::
@@ -22,12 +26,14 @@
 :::demo `separator-class` を `iconfont` をセパレータとして使用するように設定します．
 
 ```html
-<el-breadcrumb separator-class="el-icon-arrow-right">
-  <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-  <el-breadcrumb-item>promotion management</el-breadcrumb-item>
-  <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-  <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-</el-breadcrumb>
+<template>
+  <el-breadcrumb separator-class="el-icon-arrow-right">
+    <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
+    <el-breadcrumb-item>promotion management</el-breadcrumb-item>
+    <el-breadcrumb-item>promotion list</el-breadcrumb-item>
+    <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+  </el-breadcrumb>
+</template>
 ```
 
 :::

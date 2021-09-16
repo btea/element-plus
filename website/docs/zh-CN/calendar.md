@@ -7,7 +7,9 @@
 :::demo 设置 `value` 来指定当前显示的月份。如果 `value` 未指定，则显示当月。`value` 支持 `v-model` 双向绑定。
 
 ```html
-<el-calendar v-model="value"> </el-calendar>
+<template>
+  <el-calendar v-model="value"> </el-calendar>
+</template>
 
 <script>
   export default {
@@ -44,14 +46,16 @@
 :::demo 通过设置名为 `dateCell` 的 `scoped-slot` 来自定义日历单元格中显示的内容。在 `scoped-slot` 可以获取到 date（当前单元格的日期）, data（包括 type，isSelected，day 属性）。详情解释参考下方的 API 文档。
 
 ```html
-<el-calendar>
-  <template #dateCell="{data}">
-    <p :class="data.isSelected ? 'is-selected' : ''">
-      {{ data.day.split('-').slice(1).join('-') }} {{ data.isSelected ? '✔️' :
-      '' }}
-    </p>
-  </template>
-</el-calendar>
+<template>
+  <el-calendar>
+    <template #dateCell="{data}">
+      <p :class="data.isSelected ? 'is-selected' : ''">
+        {{ data.day.split('-').slice(1).join('-') }} {{ data.isSelected ? '✔️' :
+        '' }}
+      </p>
+    </template>
+  </el-calendar>
+</template>
 <style>
   .is-selected {
     color: #1989fa;
@@ -66,8 +70,10 @@
 :::demo 设置 `range` 属性指定日历的显示范围。开始时间必须是周起始日，结束时间必须是周结束日，且时间跨度不能超过两个月。
 
 ```html
-<el-calendar :range="[new Date(2019, 2, 4), new Date(2019, 2, 24)]">
-</el-calendar>
+<template>
+  <el-calendar :range="[new Date(2019, 2, 4), new Date(2019, 2, 24)]">
+  </el-calendar>
+</template>
 ```
 
 :::
@@ -77,23 +83,29 @@
 :::demo 通过设置名为 `header` 的 `scoped-slot` 来自定义日历头部显示的内容。在 `scoped-slot` 可以获取到 date（当前单元格的日期）。详情解释参考下方的 API 文档。
 
 ```html
-<el-calendar ref="calendar">
-  <template #header="{date}">
-    <span>自定义头部内容</span>
-    <span>{{ date }}</span>
-    <el-button-group>
-      <el-button size="mini" @click="selectDate('prev-year')">上一年</el-button>
-      <el-button size="mini" @click="selectDate('prev-month')"
-        >上个月</el-button
-      >
-      <el-button size="mini" @click="selectDate('today')">今天</el-button>
-      <el-button size="mini" @click="selectDate('next-month')"
-        >下个月</el-button
-      >
-      <el-button size="mini" @click="selectDate('next-year')">下一年</el-button>
-    </el-button-group>
-  </template>
-</el-calendar>
+<template>
+  <el-calendar ref="calendar">
+    <template #header="{date}">
+      <span>自定义头部内容</span>
+      <span>{{ date }}</span>
+      <el-button-group>
+        <el-button size="mini" @click="selectDate('prev-year')"
+          >上一年</el-button
+        >
+        <el-button size="mini" @click="selectDate('prev-month')"
+          >上个月</el-button
+        >
+        <el-button size="mini" @click="selectDate('today')">今天</el-button>
+        <el-button size="mini" @click="selectDate('next-month')"
+          >下个月</el-button
+        >
+        <el-button size="mini" @click="selectDate('next-year')"
+          >下一年</el-button
+        >
+      </el-button-group>
+    </template>
+  </el-calendar>
+</template>
 
 <script>
   export default {

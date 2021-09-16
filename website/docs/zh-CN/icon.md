@@ -57,28 +57,30 @@ $ npm install @element-plus/icons
 :::demo `el-icon` 为 raw SVG 图标提供额外的属性, 提供的详细属性请继续阅读
 
 ```html
-<p>
-  通过添加额外的类名 <b>is-loading</b>，你的图标就可以在 2 秒内旋转 360
-  度，但让你也可以自己改写想要的动画。
-</p>
-<el-icon :size="20">
-  <edit />
-</el-icon>
-<el-icon color="#409EFC" class="no-inherit">
-  <share />
-</el-icon>
-<el-icon>
-  <delete />
-</el-icon>
-<el-icon class="is-loading">
-  <loading />
-</el-icon>
-<el-button type="primary">
-  <el-icon style="vertical-align: middle;">
-    <search />
+<template>
+  <p>
+    通过添加额外的类名 <b>is-loading</b>，你的图标就可以在 2 秒内旋转 360
+    度，但让你也可以自己改写想要的动画。
+  </p>
+  <el-icon :size="20">
+    <edit />
   </el-icon>
-  <span style="vertical-align: middle;"> 搜索 </span>
-</el-button>
+  <el-icon color="#409EFC" class="no-inherit">
+    <share />
+  </el-icon>
+  <el-icon>
+    <delete />
+  </el-icon>
+  <el-icon class="is-loading">
+    <loading />
+  </el-icon>
+  <el-button type="primary">
+    <el-icon style="vertical-align: middle;">
+      <search />
+    </el-icon>
+    <span style="vertical-align: middle;"> 搜索 </span>
+  </el-button>
+</template>
 ```
 
 :::
@@ -88,13 +90,15 @@ $ npm install @element-plus/icons
 :::demo
 
 ```html
-<div style="font-size: 20px;">
-  <!-- SVG icon 自身不带任何属性，你需要额外提供属性。-->
-  <edit style="width: 1em; height: 1em; margin-right: 8px;" />
-  <share style="width: 1em; height: 1em; margin-right: 8px;" />
-  <delete style="width: 1em; height: 1em; margin-right: 8px;" />
-  <search style="width: 1em; height: 1em; margin-right: 8px;" />
-</div>
+<template>
+  <div style="font-size: 20px;">
+    <!-- SVG icon 自身不带任何属性，你需要额外提供属性。-->
+    <edit style="width: 1em; height: 1em; margin-right: 8px;" />
+    <share style="width: 1em; height: 1em; margin-right: 8px;" />
+    <delete style="width: 1em; height: 1em; margin-right: 8px;" />
+    <search style="width: 1em; height: 1em; margin-right: 8px;" />
+  </div>
+</template>
 ```
 
 :::

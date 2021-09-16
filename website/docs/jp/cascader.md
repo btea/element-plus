@@ -9,25 +9,27 @@
 :::demo オプションの配列に `options` 属性を代入すると、cascader をレンダリングします。`props.expandTrigger` 属性は、子オプションがどのように展開されるかを定義します。
 
 ```html
-<div class="block">
-  <span class="demonstration"
-    >クリックすると子オプションが展開される(デフォルト)</span
-  >
-  <el-cascader
-    v-model="value"
-    :options="options"
-    @change="handleChange"
-  ></el-cascader>
-</div>
-<div class="block">
-  <span class="demonstration">ホバーすると子のオプションが拡張される</span>
-  <el-cascader
-    v-model="value"
-    :options="options"
-    :props="{ expandTrigger: 'hover' }"
-    @change="handleChange"
-  ></el-cascader>
-</div>
+<template>
+  <div class="block">
+    <span class="demonstration"
+      >クリックすると子オプションが展開される(デフォルト)</span
+    >
+    <el-cascader
+      v-model="value"
+      :options="options"
+      @change="handleChange"
+    ></el-cascader>
+  </div>
+  <div class="block">
+    <span class="demonstration">ホバーすると子のオプションが拡張される</span>
+    <el-cascader
+      v-model="value"
+      :options="options"
+      :props="{ expandTrigger: 'hover' }"
+      @change="handleChange"
+    ></el-cascader>
+  </div>
+</template>
 
 <script>
   export default {
@@ -613,7 +615,9 @@ import { defineComponent, reactive, toRefs } from 'vue';
 :::demo この例では、`options` 配列の最初の項目に `disabled: true` フィールドがあるので、無効になっています。デフォルトでは、Cascader は各オプションオブジェクトの `disabled` フィールドをチェックします。オプションが無効かどうかを示すために別のフィールド名を使用している場合は、`props.disabled` 属性にそれを割り当てることができます (詳細は以下の API テーブルを参照してください)。もちろん、フィールド名 `value`、`label`、`children` も同様にカスタマイズすることができます。
 
 ```html
-<el-cascader :options="options"></el-cascader>
+<template>
+  <el-cascader :options="options"></el-cascader>
+</template>
 
 <script>
   export default {
@@ -1189,7 +1193,9 @@ import { defineComponent, reactive, toRefs } from 'vue';
 :::demo
 
 ```html
-<el-cascader :options="options" clearable></el-cascader>
+<template>
+  <el-cascader :options="options" clearable></el-cascader>
+</template>
 
 <script>
   export default {
@@ -1763,7 +1769,9 @@ import { defineComponent, reactive, toRefs } from 'vue';
 :::demo `show-all-levels` 属性は、すべてのレベルを表示するかどうかを定義する。`false` の場合、最後のレベルのみが表示される。
 
 ```html
-<el-cascader :options="options" :show-all-levels="false"></el-cascader>
+<template>
+  <el-cascader :options="options" :show-all-levels="false"></el-cascader>
+</template>
 <script>
   export default {
     data() {
@@ -2336,19 +2344,21 @@ export default defineComponent({
 :::demo 複数選択の場合、デフォルトでは選択されたタグがすべて表示されます。選択したタグを折りたたむには、`collapse-tags = true` を設定することができます。
 
 ```html
-<div class="block">
-  <span class="demonstration">すべてのタグを表示する（デフォルト)</span>
-  <el-cascader :options="options" :props="props" clearable></el-cascader>
-</div>
-<div class="block">
-  <span class="demonstration">タグの折りたたみ</span>
-  <el-cascader
-    :options="options"
-    :props="props"
-    collapse-tags
-    clearable
-  ></el-cascader>
-</div>
+<template>
+  <div class="block">
+    <span class="demonstration">すべてのタグを表示する（デフォルト)</span>
+    <el-cascader :options="options" :props="props" clearable></el-cascader>
+  </div>
+  <div class="block">
+    <span class="demonstration">タグの折りたたみ</span>
+    <el-cascader
+      :options="options"
+      :props="props"
+      collapse-tags
+      clearable
+    ></el-cascader>
+  </div>
+</template>
 
 <script>
   export default {
@@ -2554,22 +2564,24 @@ export default defineComponent({
 :::demo `props.checkStrictly = true` を設定すると、チェックしたノードの状態が親ノードや子ノードに影響を与えないようにすることができ、任意のレベルのオプションを選択することができます。
 
 ```html
-<div class="block">
-  <span class="demonstration">任意のレベルのオプションを選択（単一選択)</span>
-  <el-cascader
-    :options="options"
-    :props="{ checkStrictly: true }"
-    clearable
-  ></el-cascader>
-</div>
-<div class="block">
-  <span class="demonstration">任意のレベルのオプションを選択（複数選択)</span>
-  <el-cascader
-    :options="options"
-    :props="{ multiple: true, checkStrictly: true }"
-    clearable
-  ></el-cascader>
-</div>
+<template>
+  <div class="block">
+    <span class="demonstration">任意のレベルのオプションを選択（単一選択)</span>
+    <el-cascader
+      :options="options"
+      :props="{ checkStrictly: true }"
+      clearable
+    ></el-cascader>
+  </div>
+  <div class="block">
+    <span class="demonstration">任意のレベルのオプションを選択（複数選択)</span>
+    <el-cascader
+      :options="options"
+      :props="{ multiple: true, checkStrictly: true }"
+      clearable
+    ></el-cascader>
+  </div>
+</template>
 
 <script>
   export default {
@@ -3143,7 +3155,9 @@ export default defineComponent({
 :::demo 動的ロードを利用するには `lazy = true` を設定し、`lazyload` でデータソースのロード方法を指定する必要があります。パラメータ `lazyload` には 2 つのパラメータがあり、最初のパラメータ `node` は現在クリックされているノード、`resolve` はロードが完了したことを示すコールバックで、これを呼び出す必要があります。ノードの状態をより正確に表示するには、それがリーフノードであるかどうかを示すために `leaf` フィールドを追加します ( `props.leaf` で変更可能)。そうでない場合は、子ノードがあるかどうかで推測されます。
 
 ```html
-<el-cascader :props="props"></el-cascader>
+<template>
+  <el-cascader :props="props"></el-cascader>
+</template>
 
 <script>
   let id = 0
@@ -3215,23 +3229,25 @@ export default defineComponent({
 :::demo `el-cascader` に `filterable` を追加することでフィルタリングが可能になる。cascader は、ラベルまたは親のラベル(`show-all-levels`による)に入力キーワードが含まれているノードにマッチするようになります。もちろん、`filter-method`で検索ロジックをカスタマイズすることもできます。
 
 ```html
-<div class="block">
-  <span class="demonstration">Filterable (Single selection)</span>
-  <el-cascader
-    placeholder="Try searchingL Guide"
-    :options="options"
-    filterable
-  ></el-cascader>
-</div>
-<div class="block">
-  <span class="demonstration">Filterable (Multiple selection)</span>
-  <el-cascader
-    placeholder="Try searchingL Guide"
-    :options="options"
-    :props="{ multiple: true }"
-    filterable
-  ></el-cascader>
-</div>
+<template>
+  <div class="block">
+    <span class="demonstration">Filterable (Single selection)</span>
+    <el-cascader
+      placeholder="Try searchingL Guide"
+      :options="options"
+      filterable
+    ></el-cascader>
+  </div>
+  <div class="block">
+    <span class="demonstration">Filterable (Multiple selection)</span>
+    <el-cascader
+      placeholder="Try searchingL Guide"
+      :options="options"
+      :props="{ multiple: true }"
+      filterable
+    ></el-cascader>
+  </div>
+</template>
 
 <script>
   export default {
@@ -3805,12 +3821,14 @@ cascader ノードの内容をカスタマイズすることができます。
 :::demo `scoped slot`によって、cascader の内容をカスタマイズすることができます。スコープ内の `node` と `data` にアクセスすることができます。
 
 ```html
-<el-cascader :options="options">
-  <template #default="{ node, data }">
-    <span>{{ data.label }}</span>
-    <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
-  </template>
-</el-cascader>
+<template>
+  <el-cascader :options="options">
+    <template #default="{ node, data }">
+      <span>{{ data.label }}</span>
+      <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
+    </template>
+  </el-cascader>
+</template>
 
 <script>
   export default {
@@ -4384,7 +4402,9 @@ import { defineComponent, reactive, toRefs } from 'vue';
 :::demo `el-cascader` と同様に、`options` で代替オプションを設定したり、`props` で他の機能を有効にしたりすることができます。
 
 ```html
-<el-cascader-panel :options="options"></el-cascader-panel>
+<template>
+  <el-cascader-panel :options="options"></el-cascader-panel>
+</template>
 
 <script>
   export default {

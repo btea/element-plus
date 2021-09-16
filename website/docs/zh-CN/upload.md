@@ -7,22 +7,24 @@
 :::demo 通过 slot 你可以传入自定义的上传按钮类型和文字提示。可通过设置`limit`和`on-exceed`来限制上传文件的个数和定义超出限制时的行为。可通过设置`before-remove`来阻止文件移除操作。
 
 ```html
-<el-upload
-  class="upload-demo"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :on-preview="handlePreview"
-  :on-remove="handleRemove"
-  :before-remove="beforeRemove"
-  multiple
-  :limit="3"
-  :on-exceed="handleExceed"
-  :file-list="fileList"
->
-  <el-button size="small" type="primary">点击上传</el-button>
-  <template #tip>
-    <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
-  </template>
-</el-upload>
+<template>
+  <el-upload
+    class="upload-demo"
+    action="https://jsonplaceholder.typicode.com/posts/"
+    :on-preview="handlePreview"
+    :on-remove="handleRemove"
+    :before-remove="beforeRemove"
+    multiple
+    :limit="3"
+    :on-exceed="handleExceed"
+    :file-list="fileList"
+  >
+    <el-button size="small" type="primary">点击上传</el-button>
+    <template #tip>
+      <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
+    </template>
+  </el-upload>
+</template>
 <script>
   export default {
     data() {
@@ -70,16 +72,18 @@
 :::demo
 
 ```html
-<el-upload
-  class="avatar-uploader"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :show-file-list="false"
-  :on-success="handleAvatarSuccess"
-  :before-upload="beforeAvatarUpload"
->
-  <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-</el-upload>
+<template>
+  <el-upload
+    class="avatar-uploader"
+    action="https://jsonplaceholder.typicode.com/posts/"
+    :show-file-list="false"
+    :on-success="handleAvatarSuccess"
+    :before-upload="beforeAvatarUpload"
+  >
+    <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+  </el-upload>
+</template>
 
 <style>
   .avatar-uploader .el-upload {
@@ -144,17 +148,19 @@
 :::demo
 
 ```html
-<el-upload
-  action="https://jsonplaceholder.typicode.com/posts/"
-  list-type="picture-card"
-  :on-preview="handlePictureCardPreview"
-  :on-remove="handleRemove"
->
-  <i class="el-icon-plus"></i>
-</el-upload>
-<el-dialog v-model="dialogVisible">
-  <img width="100%" :src="dialogImageUrl" alt="" />
-</el-dialog>
+<template>
+  <el-upload
+    action="https://jsonplaceholder.typicode.com/posts/"
+    list-type="picture-card"
+    :on-preview="handlePictureCardPreview"
+    :on-remove="handleRemove"
+  >
+    <i class="el-icon-plus"></i>
+  </el-upload>
+  <el-dialog v-model="dialogVisible">
+    <img width="100%" :src="dialogImageUrl" alt="" />
+  </el-dialog>
+</template>
 <script>
   export default {
     data() {
@@ -185,41 +191,43 @@
 :::demo
 
 ```html
-<el-upload action="#" list-type="picture-card" :auto-upload="false">
-  <template #default>
-    <i class="el-icon-plus"></i>
-  </template>
-  <template #file="{file}">
-    <div>
-      <img class="el-upload-list__item-thumbnail" :src="file.url" alt="" />
-      <span class="el-upload-list__item-actions">
-        <span
-          class="el-upload-list__item-preview"
-          @click="handlePictureCardPreview(file)"
-        >
-          <i class="el-icon-zoom-in"></i>
+<template>
+  <el-upload action="#" list-type="picture-card" :auto-upload="false">
+    <template #default>
+      <i class="el-icon-plus"></i>
+    </template>
+    <template #file="{file}">
+      <div>
+        <img class="el-upload-list__item-thumbnail" :src="file.url" alt="" />
+        <span class="el-upload-list__item-actions">
+          <span
+            class="el-upload-list__item-preview"
+            @click="handlePictureCardPreview(file)"
+          >
+            <i class="el-icon-zoom-in"></i>
+          </span>
+          <span
+            v-if="!disabled"
+            class="el-upload-list__item-delete"
+            @click="handleDownload(file)"
+          >
+            <i class="el-icon-download"></i>
+          </span>
+          <span
+            v-if="!disabled"
+            class="el-upload-list__item-delete"
+            @click="handleRemove(file)"
+          >
+            <i class="el-icon-delete"></i>
+          </span>
         </span>
-        <span
-          v-if="!disabled"
-          class="el-upload-list__item-delete"
-          @click="handleDownload(file)"
-        >
-          <i class="el-icon-download"></i>
-        </span>
-        <span
-          v-if="!disabled"
-          class="el-upload-list__item-delete"
-          @click="handleRemove(file)"
-        >
-          <i class="el-icon-delete"></i>
-        </span>
-      </span>
-    </div>
-  </template>
-</el-upload>
-<el-dialog v-model="dialogVisible">
-  <img width="100%" :src="dialogImageUrl" alt="" />
-</el-dialog>
+      </div>
+    </template>
+  </el-upload>
+  <el-dialog v-model="dialogVisible">
+    <img width="100%" :src="dialogImageUrl" alt="" />
+  </el-dialog>
+</template>
 <script>
   export default {
     data() {
@@ -252,19 +260,21 @@
 :::demo
 
 ```html
-<el-upload
-  class="upload-demo"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :on-preview="handlePreview"
-  :on-remove="handleRemove"
-  :file-list="fileList"
-  list-type="picture"
->
-  <el-button size="small" type="primary">点击上传</el-button>
-  <template #tip>
-    <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
-  </template>
-</el-upload>
+<template>
+  <el-upload
+    class="upload-demo"
+    action="https://jsonplaceholder.typicode.com/posts/"
+    :on-preview="handlePreview"
+    :on-remove="handleRemove"
+    :file-list="fileList"
+    list-type="picture"
+  >
+    <el-button size="small" type="primary">点击上传</el-button>
+    <template #tip>
+      <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
+    </template>
+  </el-upload>
+</template>
 <script>
   export default {
     data() {
@@ -302,17 +312,19 @@
 :::demo
 
 ```html
-<el-upload
-  class="upload-demo"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :on-change="handleChange"
-  :file-list="fileList"
->
-  <el-button size="small" type="primary">点击上传</el-button>
-  <template #tip>
-    <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
-  </template>
-</el-upload>
+<template>
+  <el-upload
+    class="upload-demo"
+    action="https://jsonplaceholder.typicode.com/posts/"
+    :on-change="handleChange"
+    :file-list="fileList"
+  >
+    <el-button size="small" type="primary">点击上传</el-button>
+    <template #tip>
+      <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
+    </template>
+  </el-upload>
+</template>
 <script>
   export default {
     data() {
@@ -345,18 +357,20 @@
 :::demo
 
 ```html
-<el-upload
-  class="upload-demo"
-  drag
-  action="https://jsonplaceholder.typicode.com/posts/"
-  multiple
->
-  <i class="el-icon-upload"></i>
-  <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-  <template #tip>
-    <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
-  </template>
-</el-upload>
+<template>
+  <el-upload
+    class="upload-demo"
+    drag
+    action="https://jsonplaceholder.typicode.com/posts/"
+    multiple
+  >
+    <i class="el-icon-upload"></i>
+    <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+    <template #tip>
+      <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
+    </template>
+  </el-upload>
+</template>
 ```
 
 :::
@@ -366,29 +380,31 @@
 :::demo
 
 ```html
-<el-upload
-  class="upload-demo"
-  ref="upload"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :on-preview="handlePreview"
-  :on-remove="handleRemove"
-  :file-list="fileList"
-  :auto-upload="false"
->
-  <template #trigger>
-    <el-button size="small" type="primary">选取文件</el-button>
-  </template>
-  <el-button
-    style="margin-left: 10px;"
-    size="small"
-    type="success"
-    @click="submitUpload"
-    >上传到服务器</el-button
+<template>
+  <el-upload
+    class="upload-demo"
+    ref="upload"
+    action="https://jsonplaceholder.typicode.com/posts/"
+    :on-preview="handlePreview"
+    :on-remove="handleRemove"
+    :file-list="fileList"
+    :auto-upload="false"
   >
-  <template #tip>
-    <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
-  </template>
-</el-upload>
+    <template #trigger>
+      <el-button size="small" type="primary">选取文件</el-button>
+    </template>
+    <el-button
+      style="margin-left: 10px;"
+      size="small"
+      type="success"
+      @click="submitUpload"
+      >上传到服务器</el-button
+    >
+    <template #tip>
+      <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
+    </template>
+  </el-upload>
+</template>
 <script>
   export default {
     data() {

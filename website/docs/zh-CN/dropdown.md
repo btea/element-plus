@@ -9,20 +9,22 @@
 :::demo 通过组件`slot`来设置下拉触发的元素以及需要通过具名`slot`为`dropdown` 来设置下拉菜单。默认情况下，下拉按钮只要`hover`即可，无需点击也会显示下拉菜单。
 
 ```html
-<el-dropdown>
-  <span class="el-dropdown-link">
-    下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
-  </span>
-  <template #dropdown>
-    <el-dropdown-menu>
-      <el-dropdown-item>黄金糕</el-dropdown-item>
-      <el-dropdown-item>狮子头</el-dropdown-item>
-      <el-dropdown-item>螺蛳粉</el-dropdown-item>
-      <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-      <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
-    </el-dropdown-menu>
-  </template>
-</el-dropdown>
+<template>
+  <el-dropdown>
+    <span class="el-dropdown-link">
+      下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+    </span>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>黄金糕</el-dropdown-item>
+        <el-dropdown-item>狮子头</el-dropdown-item>
+        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+</template>
 
 <style>
   .el-dropdown-link {
@@ -44,32 +46,34 @@
 :::demo 设置`split-button`属性来让触发下拉元素呈现为按钮组，左边是功能按钮，右边是触发下拉菜单的按钮，设置为`true`即可。
 
 ```html
-<el-dropdown>
-  <el-button type="primary">
-    更多菜单<i class="el-icon-arrow-down el-icon--right"></i>
-  </el-button>
-  <template #dropdown>
-    <el-dropdown-menu>
-      <el-dropdown-item>黄金糕</el-dropdown-item>
-      <el-dropdown-item>狮子头</el-dropdown-item>
-      <el-dropdown-item>螺蛳粉</el-dropdown-item>
-      <el-dropdown-item>双皮奶</el-dropdown-item>
-      <el-dropdown-item>蚵仔煎</el-dropdown-item>
-    </el-dropdown-menu>
-  </template>
-</el-dropdown>
-<el-dropdown split-button type="primary" @click="handleClick">
-  更多菜单
-  <template #dropdown>
-    <el-dropdown-menu>
-      <el-dropdown-item>黄金糕</el-dropdown-item>
-      <el-dropdown-item>狮子头</el-dropdown-item>
-      <el-dropdown-item>螺蛳粉</el-dropdown-item>
-      <el-dropdown-item>双皮奶</el-dropdown-item>
-      <el-dropdown-item>蚵仔煎</el-dropdown-item>
-    </el-dropdown-menu>
-  </template>
-</el-dropdown>
+<template>
+  <el-dropdown>
+    <el-button type="primary">
+      更多菜单<i class="el-icon-arrow-down el-icon--right"></i>
+    </el-button>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>黄金糕</el-dropdown-item>
+        <el-dropdown-item>狮子头</el-dropdown-item>
+        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+        <el-dropdown-item>双皮奶</el-dropdown-item>
+        <el-dropdown-item>蚵仔煎</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+  <el-dropdown split-button type="primary" @click="handleClick">
+    更多菜单
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>黄金糕</el-dropdown-item>
+        <el-dropdown-item>狮子头</el-dropdown-item>
+        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+        <el-dropdown-item>双皮奶</el-dropdown-item>
+        <el-dropdown-item>蚵仔煎</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+</template>
 
 <style>
   .el-dropdown {
@@ -121,71 +125,79 @@
 :::demo 在`trigger`属性设置为`click`即可。
 
 ```html
-<el-row class="block-col-2">
-  <el-col :span="8">
-    <span class="demonstration">hover 激活</span>
-    <el-dropdown>
-      <span class="el-dropdown-link">
-        下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
-      </span>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus">狮子头</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus-outline"
-            >螺蛳粉</el-dropdown-item
-          >
-          <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-check"
-            >蚵仔煎</el-dropdown-item
-          >
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
-  </el-col>
-  <el-col :span="8">
-    <span class="demonstration">click 激活</span>
-    <el-dropdown trigger="click">
-      <span class="el-dropdown-link">
-        下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
-      </span>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus">狮子头</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus-outline"
-            >螺蛳粉</el-dropdown-item
-          >
-          <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-check"
-            >蚵仔煎</el-dropdown-item
-          >
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
-  </el-col>
-  <el-col :span="8">
-    <span class="demonstration">右键(contextmenu) 激活</span>
-    <el-dropdown trigger="contextmenu">
-      <span class="el-dropdown-link">
-        下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
-      </span>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus">狮子头</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus-outline"
-            >螺蛳粉</el-dropdown-item
-          >
-          <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-check"
-            >蚵仔煎</el-dropdown-item
-          >
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
-  </el-col>
-</el-row>
+<template>
+  <el-row class="block-col-2">
+    <el-col :span="8">
+      <span class="demonstration">hover 激活</span>
+      <el-dropdown>
+        <span class="el-dropdown-link">
+          下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-plus"
+              >狮子头</el-dropdown-item
+            >
+            <el-dropdown-item icon="el-icon-circle-plus-outline"
+              >螺蛳粉</el-dropdown-item
+            >
+            <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-check"
+              >蚵仔煎</el-dropdown-item
+            >
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </el-col>
+    <el-col :span="8">
+      <span class="demonstration">click 激活</span>
+      <el-dropdown trigger="click">
+        <span class="el-dropdown-link">
+          下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-plus"
+              >狮子头</el-dropdown-item
+            >
+            <el-dropdown-item icon="el-icon-circle-plus-outline"
+              >螺蛳粉</el-dropdown-item
+            >
+            <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-check"
+              >蚵仔煎</el-dropdown-item
+            >
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </el-col>
+    <el-col :span="8">
+      <span class="demonstration">右键(contextmenu) 激活</span>
+      <el-dropdown trigger="contextmenu">
+        <span class="el-dropdown-link">
+          下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-plus"
+              >狮子头</el-dropdown-item
+            >
+            <el-dropdown-item icon="el-icon-circle-plus-outline"
+              >螺蛳粉</el-dropdown-item
+            >
+            <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-check"
+              >蚵仔煎</el-dropdown-item
+            >
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </el-col>
+  </el-row>
+</template>
 
 <style>
   .el-dropdown-link {
@@ -213,20 +225,22 @@
 :::demo 下拉菜单默认在点击菜单项后会被隐藏，将`hide-on-click`属性默认为`false`可以关闭此功能。
 
 ```html
-<el-dropdown :hide-on-click="false">
-  <span class="el-dropdown-link">
-    下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
-  </span>
-  <template #dropdown>
-    <el-dropdown-menu>
-      <el-dropdown-item>黄金糕</el-dropdown-item>
-      <el-dropdown-item>狮子头</el-dropdown-item>
-      <el-dropdown-item>螺蛳粉</el-dropdown-item>
-      <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-      <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
-    </el-dropdown-menu>
-  </template>
-</el-dropdown>
+<template>
+  <el-dropdown :hide-on-click="false">
+    <span class="el-dropdown-link">
+      下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+    </span>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>黄金糕</el-dropdown-item>
+        <el-dropdown-item>狮子头</el-dropdown-item>
+        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+</template>
 
 <style>
   .el-dropdown-link {
@@ -248,20 +262,22 @@
 :::demo
 
 ```html
-<el-dropdown @command="handleCommand">
-  <span class="el-dropdown-link">
-    下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
-  </span>
-  <template #dropdown>
-    <el-dropdown-menu>
-      <el-dropdown-item command="a">黄金糕</el-dropdown-item>
-      <el-dropdown-item command="b">狮子头</el-dropdown-item>
-      <el-dropdown-item command="c">螺蛳粉</el-dropdown-item>
-      <el-dropdown-item command="d" disabled>双皮奶</el-dropdown-item>
-      <el-dropdown-item command="e" divided>蚵仔煎</el-dropdown-item>
-    </el-dropdown-menu>
-  </template>
-</el-dropdown>
+<template>
+  <el-dropdown @command="handleCommand">
+    <span class="el-dropdown-link">
+      下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+    </span>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item command="a">黄金糕</el-dropdown-item>
+        <el-dropdown-item command="b">狮子头</el-dropdown-item>
+        <el-dropdown-item command="c">螺蛳粉</el-dropdown-item>
+        <el-dropdown-item command="d" disabled>双皮奶</el-dropdown-item>
+        <el-dropdown-item command="e" divided>蚵仔煎</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+</template>
 
 <style>
   .el-dropdown-link {
@@ -313,57 +329,59 @@ Dropdown 组件提供除了默认值以外的三种尺寸，可以在不同场�
 :::demo 额外的尺寸：`medium`、`small`、`mini`，通过设置`size`属性来配置它们。
 
 ```html
-<el-dropdown split-button type="primary">
-  默认尺寸
-  <template #dropdown>
-    <el-dropdown-menu>
-      <el-dropdown-item>黄金糕</el-dropdown-item>
-      <el-dropdown-item>狮子头</el-dropdown-item>
-      <el-dropdown-item>螺蛳粉</el-dropdown-item>
-      <el-dropdown-item>双皮奶</el-dropdown-item>
-      <el-dropdown-item>蚵仔煎</el-dropdown-item>
-    </el-dropdown-menu>
-  </template>
-</el-dropdown>
+<template>
+  <el-dropdown split-button type="primary">
+    默认尺寸
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>黄金糕</el-dropdown-item>
+        <el-dropdown-item>狮子头</el-dropdown-item>
+        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+        <el-dropdown-item>双皮奶</el-dropdown-item>
+        <el-dropdown-item>蚵仔煎</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
 
-<el-dropdown size="medium" split-button type="primary">
-  中等尺寸
-  <template #dropdown>
-    <el-dropdown-menu>
-      <el-dropdown-item>黄金糕</el-dropdown-item>
-      <el-dropdown-item>狮子头</el-dropdown-item>
-      <el-dropdown-item>螺蛳粉</el-dropdown-item>
-      <el-dropdown-item>双皮奶</el-dropdown-item>
-      <el-dropdown-item>蚵仔煎</el-dropdown-item>
-    </el-dropdown-menu>
-  </template>
-</el-dropdown>
+  <el-dropdown size="medium" split-button type="primary">
+    中等尺寸
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>黄金糕</el-dropdown-item>
+        <el-dropdown-item>狮子头</el-dropdown-item>
+        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+        <el-dropdown-item>双皮奶</el-dropdown-item>
+        <el-dropdown-item>蚵仔煎</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
 
-<el-dropdown size="small" split-button type="primary">
-  小型尺寸
-  <template #dropdown>
-    <el-dropdown-menu>
-      <el-dropdown-item>黄金糕</el-dropdown-item>
-      <el-dropdown-item>狮子头</el-dropdown-item>
-      <el-dropdown-item>螺蛳粉</el-dropdown-item>
-      <el-dropdown-item>双皮奶</el-dropdown-item>
-      <el-dropdown-item>蚵仔煎</el-dropdown-item>
-    </el-dropdown-menu>
-  </template>
-</el-dropdown>
+  <el-dropdown size="small" split-button type="primary">
+    小型尺寸
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>黄金糕</el-dropdown-item>
+        <el-dropdown-item>狮子头</el-dropdown-item>
+        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+        <el-dropdown-item>双皮奶</el-dropdown-item>
+        <el-dropdown-item>蚵仔煎</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
 
-<el-dropdown size="mini" split-button type="primary">
-  超小尺寸
-  <template #dropdown>
-    <el-dropdown-menu>
-      <el-dropdown-item>黄金糕</el-dropdown-item>
-      <el-dropdown-item>狮子头</el-dropdown-item>
-      <el-dropdown-item>螺蛳粉</el-dropdown-item>
-      <el-dropdown-item>双皮奶</el-dropdown-item>
-      <el-dropdown-item>蚵仔煎</el-dropdown-item>
-    </el-dropdown-menu>
-  </template>
-</el-dropdown>
+  <el-dropdown size="mini" split-button type="primary">
+    超小尺寸
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>黄金糕</el-dropdown-item>
+        <el-dropdown-item>狮子头</el-dropdown-item>
+        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+        <el-dropdown-item>双皮奶</el-dropdown-item>
+        <el-dropdown-item>蚵仔煎</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+</template>
 ```
 
 :::

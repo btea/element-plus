@@ -33,19 +33,24 @@ Config Provider 被用来提供全局的配置选项，让你的配置能够在�
 :::demo
 
 ```html
-<div>
-  <el-config-provider :locale="locale1">
-    <div style="margin: 8px;">
-      <el-empty />
-    </div>
-    <div style="margin: 8px;">
-      <el-transfer />
-    </div>
-  </el-config-provider>
-  <el-button @click="toggle" style="margin-left: 8px; vertical-align: middle;">
-    切换语言
-  </el-button>
-</div>
+<template>
+  <div>
+    <el-config-provider :locale="locale1">
+      <div style="margin: 8px;">
+        <el-empty />
+      </div>
+      <div style="margin: 8px;">
+        <el-transfer />
+      </div>
+    </el-config-provider>
+    <el-button
+      @click="toggle"
+      style="margin-left: 8px; vertical-align: middle;"
+    >
+      切换语言
+    </el-button>
+  </div>
+</template>
 <script>
   import { ref } from 'vue'
   // import { ConfigProvider } from 'element-plus'

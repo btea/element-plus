@@ -150,11 +150,13 @@
 :::demo 利用 `wrap` 控制换行
 
 ```html
-<el-space wrap>
-  <div v-for="i in 20" :key="i">
-    <el-button type="text"> 文字按钮 </el-button>
-  </div>
-</el-space>
+<template>
+  <el-space wrap>
+    <div v-for="i in 20" :key="i">
+      <el-button type="text"> 文字按钮 </el-button>
+    </div>
+  </el-space>
+</template>
 ```
 
 :::

@@ -94,20 +94,30 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
 :::demo 利用分发取代`content`属性
 
 ```html
-<el-popover placement="right" :width="400" trigger="click">
-  <template #reference>
-    <el-button>click 激活</el-button>
-  </template>
-  <el-table :data="gridData">
-    <el-table-column width="150" property="date" label="日期"></el-table-column>
-    <el-table-column width="100" property="name" label="姓名"></el-table-column>
-    <el-table-column
-      width="300"
-      property="address"
-      label="地址"
-    ></el-table-column>
-  </el-table>
-</el-popover>
+<template>
+  <el-popover placement="right" :width="400" trigger="click">
+    <template #reference>
+      <el-button>click 激活</el-button>
+    </template>
+    <el-table :data="gridData">
+      <el-table-column
+        width="150"
+        property="date"
+        label="日期"
+      ></el-table-column>
+      <el-table-column
+        width="100"
+        property="name"
+        label="姓名"
+      ></el-table-column>
+      <el-table-column
+        width="300"
+        property="address"
+        label="地址"
+      ></el-table-column>
+    </el-table>
+  </el-popover>
+</template>
 
 <script>
   export default {
@@ -189,18 +199,22 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
 :::demo
 
 ```html
-<el-popover placement="top" :width="160" v-model:visible="visible">
-  <p>这是一段内容这是一段内容确定删除吗？</p>
-  <div style="text-align: right; margin: 0">
-    <el-button size="mini" type="text" @click="visible = false">取消</el-button>
-    <el-button type="primary" size="mini" @click="visible = false"
-      >确定</el-button
-    >
-  </div>
-  <template #reference>
-    <el-button @click="visible = true">删除</el-button>
-  </template>
-</el-popover>
+<template>
+  <el-popover placement="top" :width="160" v-model:visible="visible">
+    <p>这是一段内容这是一段内容确定删除吗？</p>
+    <div style="text-align: right; margin: 0">
+      <el-button size="mini" type="text" @click="visible = false"
+        >取消</el-button
+      >
+      <el-button type="primary" size="mini" @click="visible = false"
+        >确定</el-button
+      >
+    </div>
+    <template #reference>
+      <el-button @click="visible = true">删除</el-button>
+    </template>
+  </el-popover>
+</template>
 
 <script>
   export default {
